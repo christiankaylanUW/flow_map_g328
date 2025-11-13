@@ -4,6 +4,8 @@ const apiKey = 'd60975b1-a097-482a-8862-c3d62b381b0a';
 const sidebar = document.getElementById('sidebar');
 const originalSidebarHTML = sidebar.innerHTML;
 
+let currentTerminalName =  "";
+
 const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
@@ -49,7 +51,7 @@ map.on('load', async () => {
 
     // Create particles for each route
     const particles = [];
-    const PARTICLES_PER_ROUTE = 5; // adjust density
+    const PARTICLES_PER_ROUTE = 1; // adjust density
     routes.forEach((route, routeIdx) => {
         for (let i = 0; i < PARTICLES_PER_ROUTE; i++) {
             particles.push({
@@ -278,6 +280,8 @@ function handleTerminalData(data) {
     select.addEventListener('change', (e) => {
         console.log("Selected terminal:", e.target.value);
         loadScheduleData(e.target.value);
+        currentTerminalName = e.target.options[e.target.selectedIndex].textContent;
+        console.log("Current terminal name set to:", currentTerminalName);
     });
 
     updateMap(geojson);
@@ -296,16 +300,14 @@ function loadterminalData() {
 
 function handleScheduleData(data) {
     console.log("Handling schedule data...");
-    if (!data || !Array.isArray(data)) {
-        console.warn("No ferry schedule data returned", data);
-        return [];
-    }
+    //if (!data || !Array.isArray(data)) {
+    //    console.warn("No ferry schedule data returned", data);
+    //    return [];
+    //}
     console.log("Raw schedule data:", data);
     // Collect all Times arrays from the dataset
-    const allTimesArrays = data.TerminalCombos.map(tc => tc.Times || []);
-
-    console.log("All Times arrays:", allTimesArrays);
-    updateTerminalInfo(allTimesArrays);
+    const ScheduleToday = data.TerminalCombos
+    updateTerminalInfo(ScheduleToday);
 }
 
 function loadScheduleData(TerminalID) {
@@ -319,10 +321,78 @@ function loadScheduleData(TerminalID) {
     document.body.appendChild(script);
 }
 
-function updateTerminalInfo(allTimesArrays) {
+function parseMSDate(msDateString) {
+    if (!msDateString) return null; // handle null values
+    const match = /\/Date\((\d+)(?:[-+]\d+)?\)\//.exec(msDateString);
+    if (!match) return null;
+    const timestamp = parseInt(match[1], 10);
+    return new Date(timestamp);
+}
 
-    sidebar.innerhtml =  "correctly linked"
+function updateTerminalInfo(terminalCombos) {
+    sidebar.innerHTML = `<h2>Today's Ferry Schedule From ${currentTerminalName}</h2>`;
+
+    if (!terminalCombos || terminalCombos.length === 0) {
+        sidebar.innerHTML += "<p>No schedule data available.</p>";
+        sidebar.innerHTML += "<button id=backButton>Back to port list</button>";
+        document.getElementById('backButton').addEventListener('click', () => {
+        sidebar.innerHTML = originalSidebarHTML
+
+        document.getElementById('refreshButton').addEventListener('click', () => {
+            loadFerryData();
+            loadterminalData();
+            sidebar.innerHTML = originalSidebarHTML;
+            console.log("Ferry data refreshed");
+        });
+        loadFerryData();
+        loadterminalData();
+        });
+    }
+
+    // Extract vessel name, departing time, and arriving terminal
+    const html = terminalCombos.map(tc => {
+        // Extract vessel name
+        const vesselName = tc.VesselName || (tc.Times && tc.Times[0] && tc.Times[0].VesselName) || "Unknown";
+
+        // Extract departing time
+        let departingTime = parseMSDate(tc.DepartingTime);
+        if (!departingTime && Array.isArray(tc.Times) && tc.Times.length > 0) {
+            departingTime = parseMSDate(tc.Times[0].DepartingTime);
+        }
+
+        // Extract destination terminal
+        const destination = tc.ArrivingTerminalName || (tc.Times && tc.Times[0] && tc.Times[0].ArrivingTerminalName) || "Unknown";
+
+        return `
+        <table class="ferry-schedule-table">
+            <tr>
+                <th>Vessel</th>
+                <th>Departing</th>
+                <th>Destination</th>
+            </tr>
+            <tr>
+                <td>${vesselName}</td>
+                <td>${departingTime ? departingTime.toLocaleTimeString() : 'N/A'}</td>
+                <td>${destination}</td>
+            </tr>
+        </table>
+    `;
+    }).join('');
+
+    sidebar.innerHTML += html;
+    sidebar.innerHTML += "<button id=backButton>Back to port list</button>";
+    document.getElementById('backButton').addEventListener('click', () => {
+        sidebar.innerHTML = originalSidebarHTML
+
+        document.getElementById('refreshButton').addEventListener('click', () => {
+            loadFerryData();
+            loadterminalData();
+            sidebar.innerHTML = originalSidebarHTML;
+            console.log("Ferry data refreshed");
+        });
+        loadFerryData();
+        loadterminalData();
+    });
 }
 
 
-//https://www.wsdot.wa.gov/ferries/api/schedule/rest//scheduletoday/7//true?apiaccesscode=${apiKey}&callback=handleScheduleData
