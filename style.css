@@ -1,0 +1,128 @@
+/* General page reset */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* Map covers the full window */
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Mapbox popups */
+.mapboxgl-popup {
+  font-size: 13px;
+}
+
+/* Sidebar container */
+#sidebar {
+  position: absolute;
+  top: 120px;
+  left: 30px;
+  width: 250px;
+  height: 75%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.25);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  z-index: 2;
+}
+
+/* Sidebar header */
+#sidebar h1 {
+  font-size: 42px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  color: #333;
+  text-align: center;
+}
+
+#sidebar h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  color: #333;
+  text-align: center;
+}
+
+/* Refresh button */
+#refreshButton {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #2b83ba;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: auto;
+  transition: background-color 0.2s ease;
+}
+
+#backButton:hover {
+  background-color: #1e5a85;
+}
+
+#backButton {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #2b83ba;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: auto;
+  transition: background-color 0.2s ease;
+}
+
+#refreshButton:hover {
+  background-color: #1e5a85;
+}
+
+/* Top navigation bar */
+#topbar {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  right: 30px;
+  width: 95%;
+  height: 60px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 2;
+}
+
+/* Optional text or logo in topbar */
+#topbar p {
+  margin: 0;
+  color: #2b83ba;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Table styles */
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}

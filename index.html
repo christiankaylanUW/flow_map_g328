@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSF Vessel Map</title>
+   
+    <link
+        href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="topbar">   <p>Hello</p></div> 
+    <div id="map"></div>
+    <div id="sidebar"> 
+        <h1>Washington State <br> Ferry Map</h1>
+        <h2>To get started select a vessel on the Map <br><br> Or</h2>
+        <select id="portSelect">
+        <option disabled selected>Select a Ferry Terminal:</option>
+        <option disabled>Loading Terminals...</option>
+        </select>
+        <button id="refreshButton">Refresh Ferry Data</button>
+    </div>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
