@@ -24,10 +24,11 @@ html, body {
 /* Sidebar container */
 #sidebar {
   position: absolute;
-  top: 120px;
-  left: 30px;
+  top: 10%;
+  bottom: 10%;
+  left: 50px;
   width: 285px;
-  height: 75%;
+  height: 80%;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 2px 0 6px rgba(0,0,0,0.25);
@@ -92,32 +93,6 @@ html, body {
 
 #refreshButton:hover {
   background-color: #1e5a85;
-}
-
-/* Top navigation bar */
-#topbar {
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  right: 30px;
-  width: 95%;
-  height: 60px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  z-index: 2;
-}
-
-/* Optional text or logo in topbar */
-#topbar p {
-  margin: 0;
-  color: #2b83ba;
-  font-weight: bold;
-  font-size: 16px;
 }
 
 /* Table styles */
