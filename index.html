@@ -21,6 +21,8 @@
         <option disabled>Loading Terminals...</option>
         </select>
         <button id="refreshButton">Refresh Ferry Data</button>
+        <button class="mapButton" id="aboutButton">About This Map</button>
+
     </div>
     <div id="switchbox">
         Toggle <br> Predicted/Real <br>Ferry Positions
@@ -31,5 +33,12 @@
     </div>
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
     <script src="script.js"></script>
+
+    <!-- aboout button -->
+    <script>
+        document.getElementById("aboutButton").onclick = function () {
+            window.location.href = "about.html";
+        };
+    </script>
 </body>
 </html>

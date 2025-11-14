@@ -95,6 +95,21 @@ html, body {
   background-color: #1e5a85;
 }
 
+#aboutButton {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #2b83ba;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: auto;
+  transition: background-color 0.2s ease;
+}
+
 /* Table styles */
 table {
   font-family: Arial, Helvetica, sans-serif;
