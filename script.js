@@ -6,6 +6,13 @@ const originalSidebarHTML = sidebar.innerHTML;
 
 let currentTerminalName =  "";
 
+const layers = {
+    ferries: "ferry-particles-layer",
+    routes: "ferryRoutesLayer",
+    terminals: "terminalLayer",
+    ferrylocations: "ferryData-layer"
+};
+
 const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
@@ -36,15 +43,25 @@ map.on('load', async () => {
 
     // Prepare route data
     const routes = [];
+
     ferryRoutes.features.forEach(f => {
         const geom = f.geometry;
         if (!geom || !geom.coordinates) return;
 
-        if (geom.type === 'LineString') {
-            if (geom.coordinates.length > 1) routes.push(geom.coordinates);
-        } else if (geom.type === 'MultiLineString') {
+        if (geom.type === "LineString") {
+            const coords = geom.coordinates;
+            if (coords.length > 1) {
+                routes.push(coords);              
+                routes.push([...coords].reverse());
+            }
+        }
+
+        else if (geom.type === "MultiLineString") {
             geom.coordinates.forEach(line => {
-                if (line.length > 1) routes.push(line);
+                if (line.length > 1) {
+                    routes.push(line);               
+                    routes.push([...line].reverse()); 
+                }
             });
         }
     });
@@ -213,6 +230,9 @@ function updateMap(geojson) {
                 id: 'ferryData-layer',
                 type: 'circle',
                 source: 'ferryData',
+                layout: {
+                    visibility: 'none'
+                },
                 paint: {
                     'circle-radius': 6,
                     'circle-color': '#2b83ba',
@@ -299,13 +319,6 @@ function loadterminalData() {
 
 
 function handleScheduleData(data) {
-    console.log("Handling schedule data...");
-    //if (!data || !Array.isArray(data)) {
-    //    console.warn("No ferry schedule data returned", data);
-    //    return [];
-    //}
-    console.log("Raw schedule data:", data);
-    // Collect all Times arrays from the dataset
     const ScheduleToday = data.TerminalCombos
     updateTerminalInfo(ScheduleToday);
 }
@@ -349,7 +362,6 @@ function updateTerminalInfo(terminalCombos) {
         });
     }
 
-    // Extract vessel name, departing time, and arriving terminal
     const html = terminalCombos.map(tc => {
         // Extract vessel name
         const vesselName = tc.VesselName || (tc.Times && tc.Times[0] && tc.Times[0].VesselName) || "Unknown";
@@ -395,4 +407,20 @@ function updateTerminalInfo(terminalCombos) {
     });
 }
 
-
+document.getElementById("ferryToggle").addEventListener("change", (e) => {   
+    map.setLayoutProperty(
+        "ferryRoutesLayer",
+        "visibility",
+        e.target.checked ? "none" : "visible"
+    );
+    map.setLayoutProperty(
+        "ferry-particles-layer",
+        "visibility",
+        e.target.checked ? "none" : "visible"
+    );
+    map.setLayoutProperty(
+        "ferryData-layer",
+        "visibility",
+        e.target.checked ? "visible" : "none"
+    );
+});
