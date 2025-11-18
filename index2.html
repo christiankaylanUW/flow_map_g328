@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSF Vessel Map</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="imgs/mini_ferry_cutout.png"> 
+
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+   
+    <link
+        href="mapbox://styles/nancy324/cmhxwciko001u01sq7rf76i37"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="map"></div>
+    <div id="sidebar"> 
+        <h1>Washington State <br> Ferry Map</h1>
+        <h2>To get started select a vessel on the Map <br><br> Or</h2>
+        <select id="portSelect">
+        <option disabled selected>Select a Ferry Terminal:</option>
+        <option disabled>Loading Terminals...</option>
+        </select>
+        <button id="refreshButton">Refresh Ferry Data</button>
+        <button class="mapButton" id="aboutButton">About This Map</button>
+
+    </div>
+    <div id="switchbox">
+        Toggle <br> Predicted/Real <br>Ferry Positions
+        <label class="switch">
+            <input type="checkbox" id="ferryToggle">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <script src="script.js"></script>
+
+    <!-- aboout button -->
+    <script>
+        document.getElementById("aboutButton").onclick = function () {
+            window.location.href = "about.html";
+        };
+    </script>
+</body>
+</html>
