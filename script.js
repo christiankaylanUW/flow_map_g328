@@ -158,19 +158,7 @@ map.on('click', 'ferryData-layer', e => {
         <button id="backButton">Back to port list</button>
 
     `;
-
-    document.getElementById('backButton').addEventListener('click', () => {
-        sidebar.innerHTML = originalSidebarHTML
-
-        document.getElementById('refreshButton').addEventListener('click', () => {
-            loadFerryData();
-            loadterminalData();
-            sidebar.innerHTML = originalSidebarHTML;
-            console.log("Ferry data refreshed");
-        });
-        loadFerryData();
-        loadterminalData();
-    });
+    backButton();
 });
 
 function handleFerryData(data) {
@@ -355,18 +343,8 @@ function updateTerminalInfo(terminalCombos) {
     if (!terminalCombos || terminalCombos.length === 0) {
         sidebar.innerHTML += "<p>No schedule data available.</p>";
         sidebar.innerHTML += "<button id=backButton>Back to port list</button>";
-        document.getElementById('backButton').addEventListener('click', () => {
-        sidebar.innerHTML = originalSidebarHTML
-
-        document.getElementById('refreshButton').addEventListener('click', () => {
-            loadFerryData();
-            loadterminalData();
-            sidebar.innerHTML = originalSidebarHTML;
-            console.log("Ferry data refreshed");
-        });
-        loadFerryData();
-        loadterminalData();
-        });
+        backButton();
+        return;
     }
 
     const html = terminalCombos.map(tc => {
@@ -400,18 +378,7 @@ function updateTerminalInfo(terminalCombos) {
 
     sidebar.innerHTML += html;
     sidebar.innerHTML += "<button id=backButton>Back to port list</button>";
-    document.getElementById('backButton').addEventListener('click', () => {
-        sidebar.innerHTML = originalSidebarHTML
-
-        document.getElementById('refreshButton').addEventListener('click', () => {
-            loadFerryData();
-            loadterminalData();
-            sidebar.innerHTML = originalSidebarHTML;
-            console.log("Ferry data refreshed");
-        });
-        loadFerryData();
-        loadterminalData();
-    });
+    backButton();
 }
 
 document.getElementById("ferryToggle").addEventListener("change", (e) => {   
@@ -431,3 +398,19 @@ document.getElementById("ferryToggle").addEventListener("change", (e) => {
         e.target.checked ? "visible" : "none"
     );
 });
+
+function backButton() {
+    document.getElementById('backButton').addEventListener('click', () => {
+        sidebar.innerHTML = originalSidebarHTML
+        map.setZoom(8.2);
+        map.setCenter([-122.5, 47.95]);
+        document.getElementById('refreshButton').addEventListener('click', () => {
+            loadFerryData();
+            loadterminalData();
+            sidebar.innerHTML = originalSidebarHTML;
+            console.log("Ferry data refreshed");
+        });
+        loadFerryData();
+        loadterminalData();
+    });
+}
