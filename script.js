@@ -228,17 +228,13 @@ function updateMap(geojson) {
         if (!map.getLayer('ferryData-layer')) {
             map.addLayer({
                 id: 'ferryData-layer',
-                type: 'circle',
+                type: 'symbol',
                 source: 'ferryData',
                 layout: {
-                    visibility: 'none'
-                },
-                paint: {
-                    'circle-radius': 6,
-                    'circle-color': '#2b83ba',
-                    'circle-stroke-width': 1,
-                    'circle-stroke-color': '#000'
-                }
+                    visibility: 'none',
+                    'icon-image': 'cute2',
+                    'icon-size': 0.05, 
+                    'icon-allow-overlap': true                }
             });
         }
     } else {
