@@ -73,7 +73,7 @@ map.on('load', async () => {
         for (let i = 0; i < PARTICLES_PER_ROUTE; i++) {
             particles.push({
                 routeIdx,
-                progress: Math.random(), // random starting position
+                progress: 0,
             });
         }
     });
@@ -117,7 +117,7 @@ map.on('load', async () => {
             const lat = lat1 + (lat2 - lat1) * t;
 
             // Increment progress
-            p.progress += 0.0008; // speed
+            p.progress += 0.0003; // speed
             if (p.progress > 1) p.progress = 0;
 
             return {
@@ -303,8 +303,14 @@ function handleTerminalData(data) {
         const lat = parseFloat(selected.dataset.lat);
         const lng = parseFloat(selected.dataset.lng);
 
-        map.setCenter([lng, lat]);
-        map.setZoom(15);
+        map.flyTo({
+            center: [lng, lat],
+            zoom: 15,
+            speed: 1.2,      
+            curve: 1.42,      
+            essential: true   
+        });
+
     });
 
     updateMap(geojson);
@@ -376,13 +382,7 @@ function updateTerminalInfo(terminalCombos) {
 
         // Extract destination terminal
         ArrivingData = tc.SpaceForArrivalTerminals;
-        console.log(ArrivingData[0].DriveUpSpaceCount);
-        console.log(ArrivingData[0].ReservableSpaceCount);
-
-        const PercentFull = 
-            Math.round((100 - (ArrivingData[0].DriveUpSpaceCount / ArrivingData[0].MaxSpaceCount * 100)) * 100) / 100;
-
-
+        const PercentFull =  Math.round((100 - (ArrivingData[0].DriveUpSpaceCount / ArrivingData[0].MaxSpaceCount * 100)) * 100) / 100;
         const destination = ArrivingData[0].TerminalName || "Unknown";
 
         return `
@@ -398,7 +398,7 @@ function updateTerminalInfo(terminalCombos) {
                 <td>${vesselName}</td>
                 <td>${departingTime ? departingTime.toLocaleTimeString() : 'N/A'}</td>
                 <td>${destination}</td>
-                <td><p style="color: ${ArrivingData[0].DriveUpSpaceHexColor};">${PercentFull}</p></td>
+                <td><p style="color: ${ArrivingData[0].DriveUpSpaceHexColor};">${PercentFull}%</p></td>
                 <td><a href="https://wave2go.wsdot.com/webstore/landingPage?cg=21&c=76">Tickets</a></td>
             </tr%
         </table>
@@ -430,8 +430,13 @@ document.getElementById("ferryToggle").addEventListener("change", (e) => {
 function backButton() {
     document.getElementById('backButton').addEventListener('click', () => {
         sidebar.innerHTML = originalSidebarHTML
-        map.setZoom(8.2);
-        map.setCenter([-122.5, 47.95]);
+        map.flyTo({
+            center: [-122.5, 47.95],
+            zoom: 8.2,
+            speed: 1.2,      
+            curve: 1.42,      
+            essential: true   
+        });
         document.getElementById('refreshButton').addEventListener('click', () => {
             loadFerryData();
             loadterminalData();
