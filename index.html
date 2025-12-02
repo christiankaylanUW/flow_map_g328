@@ -32,8 +32,7 @@
                 <option disabled>Loading Terminals...</option>
             </select>
             <button id="refreshButton">Refresh</button>
-            <button class="mapButton" id="aboutButton">About</button>
-        </div>
+            <button class="mapButton" id="aboutButton" onclick="window.location.href='about.html'">About</button>        </div>
     </div>
     <div id="switchbox">
         Toggle <br> Predicted/Real <br>Ferry Positions
@@ -63,11 +62,5 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.16.0/mapbox-gl.js"></script>
     <script src="script.js"></script>
 
-    <!-- aboout button -->
-    <script>
-        document.getElementById("aboutButton").onclick = function () {
-            window.location.href = "about.html";
-        };
-    </script>
 </body>
 </html>
