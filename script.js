@@ -190,7 +190,14 @@ function handleFerryData(data) {
     };
 
     updateMap(geojson);
-}
+    
+    updateMap(geojson);
+    const sidebar = document.getElementById('sidebar');
+    const spinner = sidebar.querySelector('.spinner');
+    if (spinner) {
+        spinner.remove();
+        }
+    }
 
 function loadFerryData() {
     console.log("Loading ferry data...");
@@ -317,6 +324,10 @@ function handleScheduleData(data) {
 
 function loadScheduleData(TerminalID) {
     console.log("Loading Schedule data...");
+    const sidebar = document.getElementById('sidebar');
+    const spinner = document.createElement('div');
+    spinner.className = 'spinner';
+    sidebar.appendChild(spinner);
     const oldScript = document.getElementById('jsonpScript');
     if (oldScript) oldScript.remove();
     const script = document.createElement("script");
