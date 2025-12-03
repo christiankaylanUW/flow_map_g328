@@ -21,8 +21,6 @@ const map = new mapboxgl.Map({
 });
 
 map.on('load', async () => {
-    console.log("Map loaded");
-
     const response = await fetch('assets/WSDOT_-_Ferry_Routes.geojson');
     const ferryRoutes = await response.json();
 
@@ -155,39 +153,35 @@ map.on('click', 'ferryData-layer', e => {
         });
 
     sidebar.innerHTML = `
-        <div id="popup-header">
-            <h3><strong>${v.VesselName}</strong></h3>
-            <button id="backButton">Back to port list</button>
-            <table class="ferry-schedule-table">
-                <tr>
-                    <th>Speed</th>
-                    <th>Position</th>
-                    <th>Origin</th>
-                    <th>Destination</th>
-                    <th>ETA</th>
-                </tr>
-                <tr>
-                    <td>${parseFloat(v.Speed).toFixed(1)} kn</td>
-                    <td>[${e.lngLat.lng.toFixed(4)}, ${e.lngLat.lat.toFixed(4)}]</td>
-                    <td>${v.Departing}</td>
-                    <td>${v.Arriving}</td>
-                    <td>${v.Eta}</td>
-                </tr>
-            </table>
-        </div>
+        <h3><strong>${v.VesselName}</strong></h3>
+        <button id="backButton">Back to port list</button>
+        <table class="ferry-schedule-table">
+            <tr>
+                <th>Speed</th>
+                <th>Position</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>ETA</th>
+            </tr>
+            <tr>
+                <td>${parseFloat(v.Speed).toFixed(1)} kn</td>
+                <td>[${e.lngLat.lng.toFixed(4)}, ${e.lngLat.lat.toFixed(4)}]</td>
+                <td>${v.Departing}</td>
+                <td>${v.Arriving}</td>
+                <td>${v.Eta}</td>
+            </tr>
+        </table>
     `;
     backButton();
 });
 
 function handleFerryData(data) {
-    console.log("Raw ferry data:", data);
     const vessels = data || [];
     if (!data) {
         console.warn("No vessel data returned from API", data);
        return; // stop function safely
     }
     
-    console.log("Vessels received:", vessels.length);
     const geojson = {
         type: "FeatureCollection",
         features: vessels.map(v => ({
@@ -218,7 +212,6 @@ function handleFerryData(data) {
     }
 
 function loadFerryData() {
-    console.log("Loading ferry data...");
     const oldScript = document.getElementById('jsonpScript');
     if (oldScript) oldScript.remove();
 
@@ -277,14 +270,11 @@ function updateMap(geojson) {
 
 
 function handleTerminalData(data) {
-    console.log("Raw terminal data:", data);
     const terminals = data || [];
     if (!data) {
         console.warn("No Terminal data returned from API", data);
        return;
     }
-    
-    console.log("terminals received:", terminals.length);
     const geojson = {
         type: "FeatureCollection",
         features: terminals.map(v => ({
@@ -306,18 +296,12 @@ function handleTerminalData(data) {
         option.dataset.lat = t.Latitude;
         option.dataset.lng = t.Longitude;
         select.appendChild(option);
-        console.log(t.TerminalID)
     });
 
-    console.log("these are the terminals")
-    console.log(terminals)
-
     select.addEventListener('change', (e) => {
-        console.log("Selected terminal:", e.target.value);
         const selected = e.target.options[e.target.selectedIndex];
         loadScheduleData(e.target.value);
         currentTerminalName = e.target.options[e.target.selectedIndex].textContent;
-        console.log("Current terminal name set to:", currentTerminalName);
         const lat = parseFloat(selected.dataset.lat);
         const lng = parseFloat(selected.dataset.lng);
 
@@ -335,7 +319,6 @@ function handleTerminalData(data) {
 }
 
 function loadterminalData() {
-    console.log("Loading terminal data...");
     const oldScript = document.getElementById('jsonpScript');
     if (oldScript) oldScript.remove();
     const script = document.createElement("script");
@@ -347,13 +330,10 @@ function loadterminalData() {
 
 function handleScheduleData(data) {
     const ScheduleToday = data
-    console.log("Times:!!")
-    console.log(data)
     updateTerminalInfo(data)
 }
 
 function loadScheduleData(TerminalID) {
-    console.log("Loading Schedule data...");
     const sidebar = document.getElementById('sidebar');
     const spinner = document.createElement('div');
     spinner.className = 'spinner';
@@ -375,7 +355,7 @@ function parseMSDate(msDateString) {
 }
 
 function updateTerminalInfo(terminalCombos) {
-    sidebar.innerHTML = `<h2>Today's Ferry Schedule From ${currentTerminalName}</h2>`;
+    sidebar.innerHTML = `<h3><strong>Today's Ferry Schedule From ${currentTerminalName}</strong></h3>`;
 
     if (terminalCombos.Message) {
         sidebar.innerHTML += "<p>No schedule data available.</p>";
@@ -459,7 +439,6 @@ function backButton() {
             loadFerryData();
             loadterminalData();
             sidebar.innerHTML = originalSidebarHTML;
-            console.log("Ferry data refreshed");
         });
         loadFerryData();
         loadterminalData();
