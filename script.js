@@ -175,6 +175,19 @@ map.on('click', 'ferryData-layer', e => {
     backButton();
 });
 
+map.on('click', 'terminalData-layer', e => {
+    const v = e.features[0].properties;
+    currentTerminalName = v.TerminalName;
+    loadScheduleData(v.TerminalID);
+    map.flyTo({
+            center: [e.lngLat.lng, e.lngLat.lat+0.012],
+            zoom: 13.5,
+            speed: 1.2,      
+            curve: 1.42,      
+            essential: true   
+        });
+});
+
 function handleFerryData(data) {
     const vessels = data || [];
     if (!data) {
@@ -282,6 +295,7 @@ function handleTerminalData(data) {
             geometry: { type: "Point", coordinates: [v.Longitude, v.Latitude] },
             properties: {
                 TerminalName: v.TerminalName,
+                TerminalID: v.TerminalID
             }
         }))
     };
