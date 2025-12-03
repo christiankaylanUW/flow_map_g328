@@ -153,6 +153,7 @@ table {
     white-space: normal;
     text-align: center;
     text-align: center;
+    align-items: center;
 }
 
 .ferry-schedule-table th {
@@ -324,4 +325,12 @@ input:checked + .slider:before {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+#popup-header {
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  text-align: center;
 }

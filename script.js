@@ -146,17 +146,35 @@ map.on('click', 'ferryData-layer', e => {
     const v = e.features[0].properties;
     const sidebar = document.getElementById('sidebar');
 
-    sidebar.innerHTML = `
-        <table>
-            <h2>${v.VesselName}</h2>
-            <p><strong>Speed:</strong> ${parseFloat(v.Speed).toFixed(1)} kn</p>
-            <p><strong>Position:</strong> [${e.lngLat.lng.toFixed(4)}, ${e.lngLat.lat.toFixed(4)}]</p>
-            <p><strong>Origin:</strong> ${v.Departing}</p>
-            <p><strong>Destination:</strong> ${v.Arriving}</p>
-            <p><strong>ETA:</strong> ${v.Eta}</p>
-        </table>
-        <button id="backButton">Back to port list</button>
+    map.flyTo({
+            center: [e.lngLat.lng,e.lngLat.lat+0.012],
+            zoom: 13.5,
+            speed: 1.2,      
+            curve: 1.42,      
+            essential: true   
+        });
 
+    sidebar.innerHTML = `
+        <div id="popup-header">
+            <h3><strong>${v.VesselName}</strong></h3>
+            <button id="backButton">Back to port list</button>
+            <table class="ferry-schedule-table">
+                <tr>
+                    <th>Speed</th>
+                    <th>Position</th>
+                    <th>Origin</th>
+                    <th>Destination</th>
+                    <th>ETA</th>
+                </tr>
+                <tr>
+                    <td>${parseFloat(v.Speed).toFixed(1)} kn</td>
+                    <td>[${e.lngLat.lng.toFixed(4)}, ${e.lngLat.lat.toFixed(4)}]</td>
+                    <td>${v.Departing}</td>
+                    <td>${v.Arriving}</td>
+                    <td>${v.Eta}</td>
+                </tr>
+            </table>
+        </div>
     `;
     backButton();
 });
@@ -245,8 +263,8 @@ function updateMap(geojson) {
                 type: 'symbol',
                 source: 'terminalData',
                 layout: {
-                    'icon-image': 'harbor-15',
-                    'icon-size': 2,
+                    'icon-image': 'ferryport',
+                    'icon-size': 0.12,
                     'icon-allow-overlap': true
                 },
                 paint: {
@@ -304,8 +322,8 @@ function handleTerminalData(data) {
         const lng = parseFloat(selected.dataset.lng);
 
         map.flyTo({
-            center: [lng, lat],
-            zoom: 15,
+            center: [lng, lat+0.012],
+            zoom: 13.5,
             speed: 1.2,      
             curve: 1.42,      
             essential: true   
@@ -400,7 +418,7 @@ function updateTerminalInfo(terminalCombos) {
                 <td>${destination}</td>
                 <td><p style="color: ${ArrivingData[0].DriveUpSpaceHexColor};">${PercentFull}%</p></td>
                 <td><a href="https://wave2go.wsdot.com/webstore/landingPage?cg=21&c=76">Tickets</a></td>
-            </tr%
+            </tr>
         </table>
     `;
     }).join('');
