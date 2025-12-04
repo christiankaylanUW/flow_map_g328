@@ -59,6 +59,57 @@
         .back-link:hover {
             text-decoration: underline;
         }
+
+        /* Main wrapper that creates the two centered rows */
+    .team-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+    .team-member {
+      width: 260px;
+      text-align: center;
+    }
+    .headshot {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid #e0e0e0;
+      display: block;
+      margin: 0 auto 20px;
+    }
+    .name {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin: 0 0 8px 0;
+    }
+    .role {
+      color: #555;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+    .linkedin-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #0077b5;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .linkedin-link:hover {
+      text-decoration: underline;
+    }
+    .linkedin-icon {
+      width: 20px;
+      height: 20px;
+    }
     </style>
 </head>
 
@@ -83,7 +134,7 @@
             
             <li><b>Live Ferry View:</b> Updated real-time locations of ships, utilizing WSDOT API.</li>
                 <ol type="a">
-                    <li>Ferry Information, Schedule, and Port locations.</li>
+                    <li>Ferry Information, Schedule, and Terminal locations.</li>
                 </ol>
         </ul>
     </p>
@@ -92,20 +143,84 @@
         <span class="section-title">Data Sources:</span>
         <ul>
             <li>WSDOT Ferry Routes Geojson (<a href="https://geo.wa.gov/datasets/WSDOT::wsdot-ferry-routes/explore?location=47.590612%2C-122.422831%2C11.79">Source</a>)</li>
-            <li>Ferry Terminals + Routes in Seattle (<a href="https://data.wsdot.wa.gov/arcgis/rest/services/Shared/FerryRoutes/MapServer">Source</a>)</li>
-            <li>WSDOT Ferry Schedule API (<a href="https://www.wsdot.wa.gov/ferries/api/schedule/documentation/rest.html">Source</a>)</li>
+            <li>WSDOT Ferry Vessels API (<a href="https://www.wsdot.wa.gov/ferries/api/vessels/documentation/rest.html">Source</a>)</li>
+            <li>WSDOT Ferry Terminals API (<a href="https://www.wsdot.wa.gov/ferries/api/terminals/documentation/rest.html">Source</a>)</li>
             <li>Custom Mapbox Styling (<a href="https://api.mapbox.com/styles/v1/nancy324/cmhxwciko001u01sq7rf76i37.html?title=view&access_token=pk.eyJ1IjoibmFuY3kzMjQiLCJhIjoiY21oMTEyejlmMDY1YzJycHVwYXVyZ2U1ZiJ9.YSOrhRs2Nuc7-00ALC3Q_w&zoomwheel=true&fresh=true#0/0/0">Source</a>)</li>
         </ul>
     </p>
 
     <p>
         <span class="section-title">Credits:</span>
-        <p>
-            Christian Kaylan Alviz, Mohaned Abdullatef Ibrahim, Nancy Nguyen, Micah Santos, Will Senenko 
-            <br>
-            <p>UW GEOG 328 Final Project</p>
-            
-      </p>
+        <div class="team-wrapper">
+
+      <!-- Top row – 3 people -->
+      <div class="row">
+        <div class="team-member">
+          <img src="imgs/willheadshot.jpeg" alt="Will Senenko" class="headshot">
+          <h3 class="name">Will Senenko</h3>
+          <p class="role">Role?</p>
+          <a href="https://www.linkedin.com/in/will-senenko-00ab63208" target="_blank" class="linkedin-link">
+            <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+
+        <div class="team-member">
+          <img src="images/maria.jpg" alt="Maria Garcia" class="headshot">
+          <h3 class="name">Maria Garcia</h3>
+          <p class="role">Chief Operating Officer</p>
+          <a href="https://www.linkedin.com/in/mariagarcia" target="_blank" class="linkedin-link">
+            <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+
+        <div class="team-member">
+          <img src="images/david.jpg" alt="David Chen" class="headshot">
+          <h3 class="name">David Chen</h3>
+          <p class="role">Head of Engineering</p>
+          <a href="https://www.linkedin.com/in/davidchen" target="_blank" class="linkedin-link">
+            <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <!-- Bottom row – 2 people, perfectly centered -->
+      <div class="row">
+        <div class="team-member">
+          <img src="images/sarah.jpg" alt="Sarah Kim" class="headshot">
+          <h3 class="name">Sarah Kim</h3>
+          <p class="role">Lead Designer</p>
+          <a href="https://www.linkedin.com/in/sarahkim" target="_blank" class="linkedin-link">
+            <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+
+        <div class="team-member">
+          <img src="images/michael.jpg" alt="Michael Torres" class="headshot">
+          <h3 class="name">Michael Torres</h3>
+          <p class="role">Head of Marketing</p>
+          <a href="https://www.linkedin.com/in/michaeltorres" target="_blank" class="linkedin-link">
+            <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
     </p>
 
     <a class="back-link" href="index.html">&larr; Back to Map</a>

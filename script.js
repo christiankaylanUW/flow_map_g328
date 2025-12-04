@@ -1,11 +1,11 @@
+//Keys
 mapboxgl.accessToken = 'pk.eyJ1IjoibmFuY3kzMjQiLCJhIjoiY21oMTEyejlmMDY1YzJycHVwYXVyZ2U1ZiJ9.YSOrhRs2Nuc7-00ALC3Q_w';
 const apiKey = 'd60975b1-a097-482a-8862-c3d62b381b0a';
 
+//Constants and globals
 const sidebar = document.getElementById('sidebar');
 const originalSidebarHTML = sidebar.innerHTML;
-
 let currentTerminalName =  "";
-
 const layers = {
     ferries: "ferry-particles-layer",
     routes: "ferryRoutesLayer",
@@ -13,6 +13,7 @@ const layers = {
     ferrylocations: "ferryData-layer"
 };
 
+//Initialize map
 const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/nancy324/cmhxwciko001u01sq7rf76i37',
@@ -20,6 +21,7 @@ const map = new mapboxgl.Map({
     center: [-122.5, 47.95]
 });
 
+//Load Ferry Routes layer and Route Animation
 map.on('load', async () => {
     const response = await fetch('assets/WSDOT_-_Ferry_Routes.geojson');
     const ferryRoutes = await response.json();
@@ -135,10 +137,10 @@ map.on('load', async () => {
     
     // Start the animation
     animateParticles();
-
     loadFerryData();
     loadterminalData();
 });
+
 
 map.on('click', 'ferryData-layer', e => {
     const v = e.features[0].properties;
@@ -222,7 +224,7 @@ function handleFerryData(data) {
     if (spinner) {
         spinner.remove();
         }
-    }
+}
 
 function loadFerryData() {
     const oldScript = document.getElementById('jsonpScript');
@@ -458,3 +460,5 @@ function backButton() {
         loadterminalData();
     });
 }
+
+document.addEventListener("click", () => document.getElementById("intro").classList.add("hidden"), {once: true});

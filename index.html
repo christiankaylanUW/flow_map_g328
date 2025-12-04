@@ -20,6 +20,18 @@
 </head>
 <body>
     <div id="map"></div>
+    <div id="intro">
+        <h1>Welcome to the WA State Ferry Map!</h1>
+        <br><br>
+        <h3 class="introtext">
+            This map provides real-time locations of Washington State Ferries, along with terminal information and schedules. 
+            To get started, select a ferry terminal from the dropdown menu or click a terminal on the map. 
+            You will then see that terminals schedule for the day, as well as the real-time capacity of each departing ferry.
+            You can also switch between simulated and real-time ferry positions using the toggle in the bottom-right corner. 
+            Click any ferry to view its current status, including its origin, destination, estimated arrival time, and current speed.
+        </h3>
+        <br><H2>Click anywhere to get started.</H2>
+    </div>
     <div id="sidebar"> 
         <div class="topbar-left">
             <h1>WA State Ferry Map</h1>
@@ -35,7 +47,7 @@
             <button class="mapButton" id="aboutButton" onclick="window.location.href='about.html'">About</button></div>
     </div>
     <div id="switchbox">
-        Toggle <br> Predicted/Real <br>Ferry Positions
+        Toggle <br> Simulated/Real <br>Ferry Positions
         <label class="switch">
             <input type="checkbox" id="ferryToggle">
             <span class="slider round"></span>
@@ -61,6 +73,5 @@
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.16.0/mapbox-gl.js"></script>
     <script src="script.js"></script>
-
 </body>
 </html>
