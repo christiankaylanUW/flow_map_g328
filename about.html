@@ -1,81 +1,84 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>About This Webmap</title>
+  <meta charset="UTF-8">
+  <title>About This Webmap</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="imgs/mini_ferry_cutout.png"> 
+  <link rel="icon" type="image/png" href="imgs/mini_ferry_cutout.png">
 
   <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f7f7f7;
-            margin: 0;
-            padding: 40px;
-        }
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 40px;
+    }
 
-        .about-container {
-            max-width: 750px;
-            margin: auto;
-            background: white;
-            padding: 32px;
-            border-radius: 12px;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-        }
+    .about-container {
+      max-width: 750px;
+      margin: auto;
+      background: white;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    }
 
-        h2 {
-            margin-top: 0;
-            font-size: 30px;
-            text-align: center;
-        }
+    h2 {
+      margin-top: 0;
+      font-size: 30px;
+      text-align: center;
+    }
 
-        p {
-            line-height: 1.6;
-            margin-bottom: 20px;
-            font-size: 16px;
-        }
+    p {
+      line-height: 1.6;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
 
-        .section-title {
-            font-weight: bold;
-            font-size: 18px;
-            margin-bottom: 6px;
-            display: block;
-        }
+    .section-title {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 6px;
+      display: block;
+    }
 
-        .back-link {
-            display: inline-block;
-            margin-top: 25px;
-            text-decoration: none;
-            color: #1a73e8;
-            font-weight: bold;
-            font-size: 16px;
-        }
+    .back-link {
+      display: inline-block;
+      margin-top: 25px;
+      text-decoration: none;
+      color: #1a73e8;
+      font-weight: bold;
+      font-size: 16px;
+    }
 
-        .back-link:hover {
-            text-decoration: underline;
-        }
+    .back-link:hover {
+      text-decoration: underline;
+    }
 
-        /* Main wrapper that creates the two centered rows */
+    /* Main wrapper that creates the two centered rows */
     .team-wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 10px;
     }
+
     .row {
       display: flex;
       justify-content: center;
       gap: 40px;
     }
+
     .team-member {
       width: 260px;
       text-align: center;
     }
+
     .headshot {
       width: 180px;
       height: 180px;
@@ -85,16 +88,19 @@
       display: block;
       margin: 0 auto 20px;
     }
+
     .name {
       font-size: 1.4rem;
       font-weight: 600;
       margin: 0 0 8px 0;
     }
+
     .role {
       color: #555;
       font-size: 1.1rem;
       margin-bottom: 12px;
     }
+
     .linkedin-link {
       display: inline-flex;
       align-items: center;
@@ -103,55 +109,67 @@
       text-decoration: none;
       font-weight: 500;
     }
+
     .linkedin-link:hover {
       text-decoration: underline;
     }
+
     .linkedin-icon {
       width: 20px;
       height: 20px;
     }
-    </style>
+  </style>
 </head>
 
 <body>
 
-<div class="about-container">
+  <div class="about-container">
 
     <h2>About This Webmap</h2>
 
     <p>
-        <span class="section-title">Overview:</span>
-        <p>
-            Our map is an interactive web GIS that visualizes the ferry port traffic in the Port of Seattle across the central Puget Sound region. It combines a custom-designed Mapbox basemap with ferry route data and time-based vessel information obtained from the Washington State Department of Transportation (WSDOT). Riders can utilize this map to better understand ferry traffic and scheduling, implementing this app into their daily and regional commute.
-        </p>
+      <span class="section-title">Overview:</span>
+    <p>
+      Our map is an interactive web GIS that visualizes the ferry port traffic in the Port of Seattle across the central
+      Puget Sound region. It combines a custom-designed Mapbox basemap with ferry route data and time-based vessel
+      information obtained from the Washington State Department of Transportation (WSDOT). Riders can utilize this map
+      to better understand ferry traffic and scheduling, implementing this app into their daily and regional commute.
+    </p>
     </p>
 
     <p>
-        <span class="section-title">Features:</span>
-        <ul>
-            <li><b>Simulated Ferry View:</b> Simulated overview of ferry movement across the Puget Sound to detail ship movement.</li>
-            <br>
-            
-            <li><b>Live Ferry View:</b> Updated real-time locations of ships, utilizing WSDOT API.</li>
-                <ol type="a">
-                    <li>Ferry Information, Schedule, and Terminal locations.</li>
-                </ol>
-        </ul>
+      <span class="section-title">Features:</span>
+    <ul>
+      <li><b>Simulated Ferry View:</b> Simulated overview of ferry movement across the Puget Sound to detail ship
+        movement.</li>
+      <br>
+
+      <li><b>Live Ferry View:</b> Updated real-time locations of ships, utilizing WSDOT API.</li>
+      <ol type="a">
+        <li>Ferry Information, Schedule, and Terminal locations.</li>
+      </ol>
+    </ul>
     </p>
 
     <p>
-        <span class="section-title">Data Sources:</span>
-        <ul>
-            <li>WSDOT Ferry Routes Geojson (<a href="https://geo.wa.gov/datasets/WSDOT::wsdot-ferry-routes/explore?location=47.590612%2C-122.422831%2C11.79">Source</a>)</li>
-            <li>WSDOT Ferry Vessels API (<a href="https://www.wsdot.wa.gov/ferries/api/vessels/documentation/rest.html">Source</a>)</li>
-            <li>WSDOT Ferry Terminals API (<a href="https://www.wsdot.wa.gov/ferries/api/terminals/documentation/rest.html">Source</a>)</li>
-            <li>Custom Mapbox Styling (<a href="https://api.mapbox.com/styles/v1/nancy324/cmhxwciko001u01sq7rf76i37.html?title=view&access_token=pk.eyJ1IjoibmFuY3kzMjQiLCJhIjoiY21oMTEyejlmMDY1YzJycHVwYXVyZ2U1ZiJ9.YSOrhRs2Nuc7-00ALC3Q_w&zoomwheel=true&fresh=true#0/0/0">Source</a>)</li>
-        </ul>
+      <span class="section-title">Data Sources:</span>
+    <ul>
+      <li>WSDOT Ferry Routes Geojson (<a
+          href="https://geo.wa.gov/datasets/WSDOT::wsdot-ferry-routes/explore?location=47.590612%2C-122.422831%2C11.79">Source</a>)
+      </li>
+      <li>WSDOT Ferry Vessels API (<a
+          href="https://www.wsdot.wa.gov/ferries/api/vessels/documentation/rest.html">Source</a>)</li>
+      <li>WSDOT Ferry Terminals API (<a
+          href="https://www.wsdot.wa.gov/ferries/api/terminals/documentation/rest.html">Source</a>)</li>
+      <li>Custom Mapbox Styling (<a
+          href="https://api.mapbox.com/styles/v1/nancy324/cmhxwciko001u01sq7rf76i37.html?title=view&access_token=pk.eyJ1IjoibmFuY3kzMjQiLCJhIjoiY21oMTEyejlmMDY1YzJycHVwYXVyZ2U1ZiJ9.YSOrhRs2Nuc7-00ALC3Q_w&zoomwheel=true&fresh=true#0/0/0">Source</a>)
+      </li>
+    </ul>
     </p>
 
     <p>
-        <span class="section-title">Credits:</span>
-        <div class="team-wrapper">
+      <span class="section-title">Credits:</span>
+    <div class="team-wrapper">
 
       <!-- Top row – 3 people -->
       <div class="row">
@@ -161,19 +179,21 @@
           <p class="role">Role?</p>
           <a href="https://www.linkedin.com/in/will-senenko-00ab63208" target="_blank" class="linkedin-link">
             <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
             </svg>
             LinkedIn
           </a>
         </div>
 
         <div class="team-member">
-          <img src="images/maria.jpg" alt="Maria Garcia" class="headshot">
-          <h3 class="name">Maria Garcia</h3>
-          <p class="role">Chief Operating Officer</p>
-          <a href="https://www.linkedin.com/in/mariagarcia" target="_blank" class="linkedin-link">
+          <img src="images/maria.jpg" alt="Nancy Nguyen" class="headshot">
+          <h3 class="name">Nancy Nguyen</h3>
+          <p class="role">Role?</p>
+          <a href="https://www.linkedin.com/in/nancy-nguyen-520693244/" target="_blank" class="linkedin-link">
             <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
             </svg>
             LinkedIn
           </a>
@@ -181,11 +201,12 @@
 
         <div class="team-member">
           <img src="images/david.jpg" alt="David Chen" class="headshot">
-          <h3 class="name">David Chen</h3>
-          <p class="role">Head of Engineering</p>
-          <a href="https://www.linkedin.com/in/davidchen" target="_blank" class="linkedin-link">
+          <h3 class="name">Micah Santos</h3>
+          <p class="role"></p>
+          <a href="www.linkedin.com/in/micah-santos-376939302" target="_blank" class="linkedin-link">
             <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
             </svg>
             LinkedIn
           </a>
@@ -200,7 +221,8 @@
           <p class="role">Lead Designer</p>
           <a href="https://www.linkedin.com/in/sarahkim" target="_blank" class="linkedin-link">
             <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
             </svg>
             LinkedIn
           </a>
@@ -212,7 +234,8 @@
           <p class="role">Head of Marketing</p>
           <a href="https://www.linkedin.com/in/michaeltorres" target="_blank" class="linkedin-link">
             <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
             </svg>
             LinkedIn
           </a>
@@ -224,4 +247,5 @@
 </div>
 
 </body>
+
 </html>
