@@ -5,6 +5,10 @@ Our project is an interactive web GIS application that visualizes ferry traffic 
 
 The ferry system is an essential part of daily life in Washington State, especially around Seattle, Bainbridge Island, and the surrounding islands. While ferry schedules and ridership statistics are widely available online, our project provides a spatial and animated representation of actual vessel movement. This allows users to view intensity, directionality, and changes in ferry activity by day or by hour in a way that is more intuitive than static text or tables.
 
+This project features an introduction page explaining basic user controls and website features to allow for a guided user-experience. This explanation re-appears on site re-load
+
+Note: Only ferry activity originating from terminals provided in WSDOT public API is tracked on this map. Privately owned ferry terminals such as those located around Lake Chelan are labeled but without any recorded traffic.
+
 ## Project Goal
 The goal of this project is to use real-time data provided by WSDOT to give an accurate representation and animation of the ferry routes that are used in the Puget Sound area. The main message we want to convey is to show one of the many ways people travel around the Puget Sound area, how many people use these systems, and how extensive these systems are. 
 
