@@ -18,7 +18,8 @@ const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/nancy324/cmhxwciko001u01sq7rf76i37',
     zoom: 8.2,
-    center: [-122.5, 47.95]
+    center: [-122.5, 47.95],
+    minZoom: 8.2,
 });
 
 //Load Ferry Routes layer and Route Animation
