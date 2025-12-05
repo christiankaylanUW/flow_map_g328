@@ -50,11 +50,13 @@ Below are screenshots of the main map interface and the About page included in o
 - Refresh functionality that updates vessel locations using the most recent data.
 - Interactive map navigation through mouse and trackpad controls.
 - **animateParticles():** Animates the simulated movement of ferries along travel paths.
-- **loadFerryData():** Fetches API data and generates a GeoJSON object containing ferry locations and attributes including active status and associated terminals.
+- **loadFerryData():** Fetches API data for all ferrys via JSONP.
 - **handleFerryData():** Loads and reloads real-time ferry location data by replacing old JSON data with new API responses and updating HTML as needed.
 - **updateMap():** Loads ferry and terminal layers depending on which dataset (vessels or terminals) is selected.
 - **handleTerminalData():** Creates GeoJSON objects for each terminal, populates the terminal dropdown list, and triggers the schedule loading process.
-- **loadTerminalData():** Fetches and updates terminal schedule information from the WSDOT terminal API.
+- **loadTerminalData():** Fetches API data for all terminals via JSONP.
+- **loadScheduleData():** Load schedule data for a specific terminal via JSONP.
+- **handleScheduleData():** Pass schedule data to updateTerminalInfo function.
 - **parseMSDate():** Reformats date values from the API into valid JavaScript Date objects.
 - **updateTerminalInfo():** Builds and displays the daily schedule for a selected terminal in the topbar.
 
